@@ -1,0 +1,91 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:root {
+  --color-bg: #f9fafb;
+  --color-text: #111827;
+  --color-primary: #2563eb;
+  --color-danger: #dc2626;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --radius: 12px;
+}
+
+/* ===== MIXINS ===== */
+/* Центрирование */
+/* Кнопка */
+/* ===== PLACEHOLDERS ===== */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+/* ===== CARD ===== */
+.card__title {
+  font-size: 20px;
+  margin-bottom: var(--space-2);
+}
+.card__text {
+  opacity: 0.8;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.buttons .btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+.buttons .btn:hover {
+  opacity: 0.9;
+}
+.buttons .btn--danger {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: none;
+  background: var(--color-danger);
+  color: #fff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=styles.css.map */

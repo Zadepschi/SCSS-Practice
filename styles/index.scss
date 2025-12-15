@@ -1,0 +1,49 @@
+@use "./normalize";
+@use "./fonts";
+@use "./vars";
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+/* ===== CARD ===== */
+.card {
+  @extend %card;
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: var(--space-2);
+  }
+
+  &__text {
+    opacity: 0.8;
+  }
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+  @include vars.flex-center(var(--space-2));
+  margin-top: var(--space-4);
+
+  .btn {
+    @include vars.button-base(var(--color-primary));
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &--danger {
+      @include vars.button-base(var(--color-danger));
+    }
+  }
+}

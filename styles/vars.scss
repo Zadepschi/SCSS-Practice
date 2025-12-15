@@ -1,0 +1,41 @@
+:root {
+  --color-bg: #f9fafb;
+  --color-text: #111827;
+  --color-primary: #2563eb;
+  --color-danger: #dc2626;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+
+  --radius: 12px;
+}
+
+/* ===== MIXINS ===== */
+
+/* Центрирование */
+@mixin flex-center($gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+/* Кнопка */
+@mixin button-base($bg, $color: #fff) {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: none;
+  background: $bg;
+  color: $color;
+  cursor: pointer;
+}
+
+/* ===== PLACEHOLDERS ===== */
+%card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
