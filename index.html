@@ -2,21 +2,173 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>SCSS Practice</title>
-  <link rel="stylesheet" href="./css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCSS Practice UI</title>
+
+  <!-- Собранный CSS -->
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
 
   <div class="container">
-    <div class="card">
-      <h2 class="card__title">SCSS в действии</h2>
-      <p class="card__text">
-        Здесь используются mixin, extend, вложенность и переменные
-      </p>
 
-      <div class="buttons">
-        <button class="btn">ОК</button>
-        <button class="btn btn--danger">Удалить</button>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header__top">
+        <div class="header__brand">
+          <div class="header__brand-logo" aria-hidden="true"></div>
+          <div>
+            <div class="header__brand-title">SCSS Practice</div>
+            <div class="header__brand-tagline">loops • mixins • extend • functions</div>
+          </div>
+        </div>
+
+        <nav class="header__nav" aria-label="Навигация">
+          <a class="is-active" href="#cards">Cards</a>
+          <a href="#alerts">Notifications</a>
+          <a href="#form">Form</a>
+          <a href="#modal">Modal</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- GRID / CARDS -->
+    <section id="cards" class="grid" aria-label="Карточки">
+      <article class="card card--featured">
+        <h2 class="card__title">Featured Card</h2>
+        <p class="card__text">
+          Это карточка с модификатором <strong>card--featured</strong>. Тут видно работу
+          <strong>@extend</strong>, переменных из <strong>:root</strong>, а ещё тени и бордеры.
+          Текст ограничен миксином <strong>@include clamp(3)</strong>, чтобы не разрастался.
+        </p>
+        <div class="card__meta">
+          <span>Статус: <code>featured</code></span>
+          <span>Версия: <code>1.0.0</code></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="card__title">Обычная карточка</h2>
+        <p class="card__text">
+          Здесь просто базовые стили карточки. Проверь в итоговом CSS,
+          как работает placeholder <code>%card</code> и <code>@extend</code> с namespace <code>vars.%card</code>.
+          Можно добавить больше текста и посмотреть, как срабатывает ограничение строк.
+        </p>
+        <div class="card__meta">
+          <span>Тип: <code>base</code></span>
+          <span>Шрифт: <code>Inter</code></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="card__title">Utilities (m/p/mt)</h2>
+        <p class="card__text">
+          Ниже кнопки и блоки используют utility-классы, сгенерированные через <strong>@each</strong>.
+          Найди в CSS классы типа <code>.p-4</code>, <code>.mt-4</code>, <code>.m-2</code>.
+        </p>
+        <div class="card__meta">
+          <span>Сгенерировано: <code>@each</code></span>
+          <span>Spacing: <code>--space-*</code></span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="card__title">Mono code example</h2>
+        <p class="card__text">
+          Пример кода с моноширинным шрифтом:
+          <span class="text-mono">const x = 42;</span>
+          (класс <code>.text-mono</code> тоже добавлен в vars.scss)
+        </p>
+        <div class="card__meta">
+          <span>Font: <code>--font-mono</code></span>
+          <span>Class: <code>.text-mono</code></span>
+        </div>
+      </article>
+    </section>
+
+    <!-- ALERTS -->
+    <section id="alerts" class="mt-4" aria-label="Уведомления">
+      <div class="alert alert--success">
+        <div class="alert__title">Success</div>
+        <div class="alert__text">Класс сгенерирован циклом: <code>.alert--success</code></div>
+      </div>
+
+      <div class="alert alert--warning">
+        <div class="alert__title">Warning</div>
+        <div class="alert__text">Класс сгенерирован циклом: <code>.alert--warning</code></div>
+      </div>
+
+      <div class="alert alert--danger">
+        <div class="alert__title">Danger</div>
+        <div class="alert__text">Класс сгенерирован циклом: <code>.alert--danger</code></div>
+      </div>
+    </section>
+
+    <!-- ACTIONS -->
+    <section class="actions" aria-label="Кнопки">
+      <button class="btn">Primary</button>
+      <button class="btn btn--ghost">Ghost</button>
+      <button class="btn btn--danger">Danger</button>
+      <a class="btn btn--ghost" href="#modal">Открыть модалку</a>
+    </section>
+
+    <!-- FORM -->
+    <section id="form" class="form" aria-label="Форма">
+      <div class="form__row">
+        <label>
+          Имя
+          <input type="text" placeholder="Например, Наталия" />
+        </label>
+
+        <label>
+          Email
+          <input type="email" placeholder="name@example.com" />
+        </label>
+      </div>
+
+      <label class="mt-4">
+        Сообщение
+        <textarea placeholder="Напиши пару строк..."></textarea>
+      </label>
+
+      <label class="mt-4">
+        Тема
+        <select>
+          <option>SCSS: @use и namespace</option>
+          <option>SCSS: @mixin / @include</option>
+          <option>SCSS: @extend / %placeholder</option>
+          <option>SCSS: loops + map</option>
+        </select>
+      </label>
+
+      <div class="form__hint">
+        <span class="sr-only">Подсказка для скринридера</span>
+        Подсказка: открой DevTools → посмотри, какие классы применяются и откуда они пришли.
+      </div>
+
+      <div class="actions">
+        <button class="btn">Отправить</button>
+        <a class="btn btn--ghost" href="#cards">Назад к карточкам</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Меняю файлы в SCSS <code>styles/</code> и наблюдаю итоговый CSS.</p>
+    </footer>
+
+  </div>
+
+  <!-- MODAL (CSS-only via :target) -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Модальное окно">
+    <div class="modal__dialog">
+      <div class="modal__title">Модалка без JS</div>
+      <div class="modal__text">
+        Открывается через <code>#modal:target</code>. Закрыть можно ссылкой ниже (убираем якорь).
+      </div>
+      <div class="actions">
+        <a class="btn" href="#form">К форме</a>
+        <a class="btn btn--ghost" href="#">Закрыть</a>
       </div>
     </div>
   </div>
